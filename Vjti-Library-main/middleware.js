@@ -34,6 +34,17 @@ module.exports.validateBook= (req,res,next) => {
     }
  }
 
+ module.exports.validateBookBank= (req,res,next) => {
+    const {error}= BookBankSchema.validate(req.body);
+    if(error){
+       const msg=error.details.map(el => el.message).join(',');
+       throw new ExpressError(msg, 400);
+    }
+    else{
+       next();
+    }
+ }
+
 //  module.exports.isAdmin = async (req, res, next) => {
 //     const { id } = req.params;
 //     const book = await Book.findById(id);

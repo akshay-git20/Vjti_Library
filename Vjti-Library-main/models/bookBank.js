@@ -25,6 +25,9 @@ const BookBankSchema= new Schema( {
         type: Number, 
         min: 0
     },
+    description:{
+        type: String
+    },
     images: {
         type: String
     },

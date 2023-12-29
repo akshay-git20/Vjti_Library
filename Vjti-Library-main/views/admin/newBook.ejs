@@ -1,73 +1,74 @@
 <% layout('layouts/adminBoilerplate')%>
 <style>
-    .form-control{
+    .form-card {
+        border: 1px solid #d3d3d3;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .form-control {
         border: 1px solid black;
     }
 </style>
-    <div class="row mt-3">
-       <h1 class="text-center">New Book</h1>
-        <div class="col-6 offset-3">
-        <form action="/admin/books" method="post" novalidate class="row g-3 needs-validation">
-            <div class="mb-3">
-                <label  for="title" class="form-label">Title</label>
-                <input class="form-control"
-                 type="text" id="title" name="book[title]" placeholder="" required>
-                 <div class="valid-feedback">valid!</div>
-            </div>
 
-        
-            
-            <div class="mb-3">
-                <label   for="book_author" class="form-label">Book Author</label>
-                <input class="form-control" type="text" id="book_author" name="book[book_author]" placeholder="" required>
-                <div class="valid-feedback">
-                    valid!
-                 </div>
-            </div>
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card form-card">
+                <div class="card-body">
+                    <h1 class="text-center text-white form-title" style="background-color:green">New Book</h1>
+                    <form action="/admin/books" method="post" novalidate class="row g-3 needs-validation">
+                        <div class="mb-1.9">
+                            <label for="title" class="form-label">Title</label>
+                            <input class="form-control" type="text" id="title" name="book[title]" placeholder="Enter book title.." required>
+                            <div class="valid-feedback">Valid!</div>
+                        </div>
 
-            <div class="mb-3">
-                <label   for="subject" class="form-label">Subject</label>
-                <input class="form-control" type="text" id="subject" name="book[subject]" placeholder="" required>
-                <div class="valid-feedback">
-                    valid!
-                 </div>
-            </div>
+                        <div class="mb-1.9">
+                            <label for="book_author" class="form-label">Book Author</label>
+                            <input class="form-control" type="text" id="book_author" name="book[book_author]" placeholder="Enter book author" required>
+                            <div class="valid-feedback">Valid!</div>
+                        </div>
 
-            <div class="mb-3">
-                <label  for="edition" class="form-label">Book Edition</label>
-                <input class="form-control"
-                 type="text" id="edition" name="book[edition]" placeholder="" required>
-                 <div class="valid-feedback">valid!</div>
-            </div>
+                        <div class="mb-1.9">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input class="form-control" type="text" id="subject" name="book[subject]" placeholder="Enter subject" required>
+                            <div class="valid-feedback">Valid!</div>
+                        </div>
 
-            <div class="mb-3">
-                <label   for="totalCopies" class="form-label">Total Copies</label>
-                <input class="form-control" type="text" id="totalCopies" name="book[totalCopies]" placeholder="" required>
-                <div class="valid-feedback">
-                    valid!
-                 </div>
-            </div>
+                        <div class="mb-1.9">
+                            <label for="edition" class="form-label">Book Edition</label>
+                            <input class="form-control" type="text" id="edition" name="book[edition]" placeholder="Enter book edition" required>
+                            <div class="valid-feedback">Valid!</div>
+                        </div>
 
-            <div class="mb-3">
-                <label   for="availableCopies" class="form-label">Available Copies</label>
-                <input class="form-control" type="text" id="availableCopies" name="book[availableCopies]" placeholder="" required>
-                <div class="valid-feedback">
-                    valid!
-                 </div>
-            </div>
+                        <div class="mb-1.9">
+                            <label for="totalCopies" class="form-label">Total Copies</label>
+                            <input class="form-control" type="text" id="totalCopies" name="book[totalCopies]" placeholder="Enter total copies" required>
+                            <div class="valid-feedback">Valid!</div>
+                        </div>
 
-            <div class="mb-3">
-                <label class="form-label" for="image">Image</label>
-                <input class="form-control" type="text" placeholder="" name="book[images]" id="image" required>
-                <div class="valid-feedback">Looks Good!</div>
-            </div>
+                        <div class="mb-1.9">
+                            <label for="availableCopies" class="form-label">Available Copies</label>
+                            <input class="form-control" type="text" id="availableCopies" name="book[availableCopies]" placeholder="Enter available copies" required>
+                            <div class="valid-feedback">Valid!</div>
+                        </div>
 
-            <div class="mb-3">
-                <button class="btn btn-success">Add Book</button>
+                        <div class="mb-1.9">
+                            <label class="form-label" for="image">Image</label>
+                            <input class="form-control" type="text" placeholder="" name="book[images]" id="image"placeholder="Enter Image" required>
+                            <div class="valid-feedback">Looks Good!</div>
+                        </div>
+
+                        <div class="mb-0.2 text-center">
+                            <button class="btn btn-success w-25">Add Book</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </form>
-    
-       </div>
+        </div>
     </div>
-
-    
+</div>

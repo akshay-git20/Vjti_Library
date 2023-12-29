@@ -34,7 +34,7 @@ router.get('/newBookbank', admins.renderNewFormBookbank);
 
 router.post('/books', validateBook, catchAsync(admins.createBook) );
 
-router.post('/bookbank', validateBook, catchAsync(admins.createBookbank));
+router.post('/bookbank',catchAsync(admins.createBookbank));
 
 router.get('/showIssuedBooks', catchAsync(admins.showIssuedBook));
 
