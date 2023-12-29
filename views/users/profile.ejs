@@ -1,64 +1,176 @@
-<% if(status === "student") { %> 
-    <%- layout('layouts/boilerplate.ejs')%> 
+<% if (status === "student") { %>
+    <%- layout('layouts/boilerplate.ejs') %>
 <% } else { %>
-    <%- layout('layouts/adminBoilerplate.ejs')%> 
-<% } %> 
-    <style>
-    #profile {
-            height: 44px;
-            text-align: center;
-          }
-     .card{
-        margin-left:4%;
-        margin-right:4%;
-    }
-    </style>
+    <%- layout('layouts/adminBoilerplate.ejs') %>
+<% } %>
 
-    <div class="card mb-5 ml-3 mr-3">
-        <div id="profile" class="card-header align-text-center">
-            <h4>PROFILE</h4>
-        </div>
-        <div style="text-align: justify;" class="card-body align-text-center col-8 mt-4 ms-5">
-            <p>Name: <%= user.username %> </p>
-            <p>Registration ID: <%= user.regId %> </p>
-            <p>Email: <%= user.email %> </p>
-        </div>
+<style>
+    .card {
+        width: 80%;
+        margin: 2% auto;
+        transition: transform 0.3s ease-in-out;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+    .card-body {
+        text-align: justify;
+        font-family: 'Arial', sans-serif;
+        padding: 2rem;
+    }
+
+    .card-title {
+        font-size: 1.8rem;
+        color: #333;
+        margin-bottom: 1.5rem;
+    }
+
+    .card-text {
+        font-size: 1.1rem;
+        color: #555;
+        margin-bottom: 0.7rem;
+    }
+
+    .btn-edit-profile {
+        margin-left: 150px;
+        margin-bottom: 15px;
+        margin-top: 1.5rem;
+        background-color: #007bff;
+        color: #fff;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+    .btn-edit-profile:hover {
+        background-color: #0056b3;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    .fadeIn {
+        animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .issued-books-list {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .issued-book-item {
+        margin-bottom: 1.5rem;
+    }
+
+    .btn-fine,
+    .btn-block {
+        background-color: #dc3545;
+        color: #fff;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        height: 40px; /* Adjust the height as needed */
+        font-size: 1.2rem; /* Adjust the font size as needed */
+        width: 15%; /* Make the button full width */
+        font-size: 14px;
+    }
+
+    .btn-fine:hover,
+    .btn-block:hover {
+        background-color: #bb2d3b;
+    }
+</style>
+
+<div class="card mb-5 fadeIn">
+    <div id="profile" class="card-header align-text-center">
+        <h4 class="card-title">User Profile</h4>
     </div>
-    <div class="card mb-5">
-        <div id="profile" class="card-header align-text-center">
-            <h4>ISSUED BOOKS</h4>
-        </div>
-        <div style="text-align: justify;" class="card-body align-text-center col-8 mt-4 ms-5">
-            <% if((user.issuedBooks).length === 0 && books.length === 0) { %> 
-                <p class="card-text">No books currently issued</p>
-            <%} else {%>
-                <% for (let i=0; i<books.length; i++) { %>
-                    <ul>
-                        <li><%= (books[i]).title %>   Date Issued: <%=(user.issuedBooks[i]).dateIssued%>   Return before: <%=(user.issuedBooks[i]).deadline%></li>
-                    </ul>
-                <% } %> 
+    <div class="card-body">
+        <p class="card-text fadeIn"><strong>Name: </strong><%= user.username %> </p>
+        <p class="card-text fadeIn"><strong>Registration ID: </strong><%= user.regId %> </p>
+        <p class="card-text fadeIn"><strong>Email: </strong><%= user.email %> </p>
+    </div>
+</div>
+
+<div class="card mb-5 fadeIn">
+    <div id="profile" class="card-header align-text-center">
+        <h4 class="card-title">Issued Books</h4>
+    </div>
+    <div class="card-body">
+        <% if ((user.issuedBooks).length === 0 && books.length === 0) { %>
+            <p class="card-text fadeIn">No books currently issued</p>
+        <% } else { %>
+            <ul class="issued-books-list">
+                <% for (let i = 0; i < books.length; i++) { %>
+                    <li class="issued-book-item fadeIn">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <strong><%= (books[i]).title %></strong>
+                                <br>
+                                <%
+                                    const currentDate = new Date();
+                                    const deadlineParts = (user.issuedBooks[i]).deadline.split('/');
+                                    const deadlineDate = new Date(`${deadlineParts[2]}-${deadlineParts[1]}-${deadlineParts[0]}`);
+
+                                    if (currentDate > deadlineDate ) { %>
+                                        
+                                        <span>Date Issued: <%= (user.issuedBooks[i]).dateIssued%></span>
+                                        <span style="margin-left: 20px;color: red;;">Return before: <%= (user.issuedBooks[i]).deadline %></span>
+                                    <% } else { %>
+                                        
+                                        <span>Date Issued: <%= (user.issuedBooks[i]).dateIssued%></span>
+                                        <span style="margin-left: 20px;">Return before: <%= (user.issuedBooks[i]).deadline %></span>
+
+                                    <% } %>
+                                %>
+                                
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <% 
+                                    
+                                    if (currentDate > deadlineDate && status === "student") { %>
+                                        <!-- Show the Fine button for students -->
+                                        <button class="btn btn-fine">Pay Fine</button>
+                                    <% } else if (currentDate > deadlineDate && status === "admin") { %>
+                                        <!-- Show the Block button for admins -->
+                                        <button class="btn btn-block">Block</button>
+                                    <% } %>
+                            </div>
+                        </div>
+                    </li>
+                <% } %>
+            </ul>
+        <% } %>
+    </div>
+</div>
+
+<div class="card mb-5 fadeIn">
+    <div id="profile" class="card-header align-text-center">
+        <h4 class="card-title">Book Bank</h4>
+    </div>
+    <div class="card-body">
+        <% if ((user.bookBank).length === 0 && bbooks.length === 0) { %>
+            <p class="card-text fadeIn">No books currently issued from Book Bank</p>
+        <% } else { %>
+            <% for (let i = 0; i < bbooks.length; i++) { %>
+                <ul class="issued-books-list fadeIn">
+                    <li class="issued-book-item">
+                        <strong><%= bbooks[i].title %></strong>
+                        <br>
+                        <span>Date Issued: <%= (user.bookBank[i]).dateIssued %></span>
+                        <span style="margin-left: 20px;">Return before: <%= (user.bookBank[i]).deadline %></span>
+                    </li>
+                </ul>
             <% } %>
-        </div>
+        <% } %>
     </div>
-    
-    <div class="card mb-5">
-        <div id="profile" class="card-header align-text-center">
-            <h4>BOOK BANK</h4>
-        </div>
-        <div style="text-align: justify;" class="card-body align-text-center col-8 mt-4 ms-5">
-            <% if((user.bookBank).length === 0 && bbooks.length === 0) { %> 
-                <p class="card-text">No books currently issued from Book Bank</p>
-            <%} else {%>
-                <% for (let i=0; i<bbooks.length; i++) { %>
-                    <ul>
-                        <li><%= bbooks[i].title %>   Date Issued: <%= (user.bookBank[i]).dateIssued%>   Return before: <%=(user.bookBank[i]).deadline%></li>
-                    </ul>
-                <% } %> 
-            <% } %>
-        </div>
-    </div>
-    <% if(status==="admin") { %> 
-    
-        <a class="btn btn-primary" style="margin-left: 2%; margin-bottom:2%" href="/admin/<%=user._id%>/edit">Edit Profile</a>
-   
-    <% } %> 
+</div>
+
+<% if (status === "admin") { %>
+    <a class="btn btn-primary btn-edit-profile fadeIn" href="/admin/<%= user._id %>/edit">Edit Profile</a>
+<% } %>
