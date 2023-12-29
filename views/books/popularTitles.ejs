@@ -1,76 +1,95 @@
 <% layout('layouts/boilerplate.ejs')%>
 <style>
-    .wrapper {
-  margin-left:75%;
-  margin-top: 1%;
-  
-}
-#search-container {
-  margin: 0.5em 0;
-}
-#search-container input {
-  background-color: transparent;
-  width: 35vh;
-  height: 40px;
-  border-radius: 5px;
-  border-bottom: 2px solid #110f29;
-  padding: 0.7em 0.3em;
+  .wrapper {
+    margin-left: 75%;
+    margin-top: 1%;
+  }
 
-}
-#search-container input:focus {
-  border-bottom-color: #6759ff;
-}
-.card{
-    margin-left:4%;
-    margin-right:4%;
-}
-  
+  #search-container {
+    margin: 0.5em 0;
+  }
+
+  #search-container input {
+    background-color: transparent;
+    width: 35vh;
+    height: 40px;
+    border-radius: 5px;
+    border-bottom: 2px solid #110f29;
+    padding: 0.7em 0.3em;
+  }
+
+  #search-container input:focus {
+    border-bottom-color: #6759ff;
+  }
+
+  .card {
+    margin-left: 4%;
+    margin-right: 4%;
+    height: 300px; /* Set a fixed height for the card */
+  }
+
+  .book-image {
+    width: 160px; /* Set a fixed width for the image */
+    height: 100%; /* Ensure the image takes the full height of the card */
+    object-fit: cover; /* This property scales the image while maintaining its aspect ratio */
+  }
+
+  .book-details {
+    padding-left: 20px;
+    margin-top: 24px;
+  }
 </style>
-    <div id="Allbooks">
-    <h3>Popular Titles</h3>
-    <% for (let book of books) { %>
-        <div class="card">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="<%=book.images%> " alt="" class="img-fluid mt-4 mb-4 ms-4" width="230" height="160">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <div class="title" id="title">
-                        <%= book.title %>
-                    </div>
-                    <h5><strong><%= book.title %> </strong></h5>
-                    <h6><%= book.book_author %> </h6>
-                    <p class="card-text"><i><%= book.description %></i> </p>
-                    <p class="card-text">
-                        <small class="text-muted">Edition: <%= book.edition %> </small> <br>
-                        <small class="text-muted">Available Copies: <%= book.availableCopies %> </small><br>
-                        <small class="text-muted">Popularity: <%= book.popularity %> </small>
-                    </p>
-                        </p>
-                        <p>
-                        <a class="btn btn-primary" href="/books/<%=book._id%>">View <%=book.title%> </a>
-                    </p>
-                    </div>
-                </div>
-            </div>
+
+<div id="Allbooks" class="row">
+  <h3 style="margin-left: 55px">Popular Titles</h3>
+  <% for (let book of books) { %>
+  <div class="col-md-6">
+    <div class="card mb-3">
+      <div class="row">
+        <div class="col-md-4">
+          <img src="<%=book.images%> " alt="" class="book-image" width="160" />
         </div>
-        <br>
-    <% } %>
+        <div class="col-md-8">
+          <div class="book-details">
+            <div class="title" id="title"><%= book.title %></div>
+            <h5><strong><%= book.title %> </strong></h5>
+            <h6><%= book.book_author %></h6>
+            <p class="card-text"><i><%= book.description %></i></p>
+            <p class="card-text">
+              <small class="text-muted">Edition: <%= book.edition %> </small>
+              <br />
+              <small class="text-muted"
+                >Available Copies: <%= book.availableCopies %> </small
+              ><br />
+              <small class="text-muted"
+                >Popularity: <%= book.popularity %>
+              </small>
+            </p>
+            <a class="btn btn-primary" href="/books/<%=book._id%>"
+              >View <%=book.title%>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <% } %>
 </div>
-    <script>
-        const searchfun=()=>{
-            let filter =document.getElementById('search-input').value.toUpperCase();
-            let Allbook =document.getElementById('Allbooks');
-            let bk=Allbook.getElementsByClassName('card');
-            
-            for(var i=0; i<bk.length;i++){
-                let title=bk[i].firstElementChild.innerText;
-                if(title.toUpperCase().indexOf(filter)>-1){
-                   bk[i].style.display="";
-                }else{
-                  bk[i].style.display="none";
-                }
-            }
-        }
-    </script>
+
+<script>
+  const searchfun = () => {
+    let filter = document.getElementById("search-input").value.toUpperCase();
+    let Allbook = document.getElementById("Allbooks");
+    let bk = Allbook.getElementsByClassName("card");
+
+    for (var i = 0; i < bk.length; i++) {
+      let title = bk[i].querySelector(".title").innerText;
+      if (title.toUpperCase().indexOf(filter) > -1) {
+        bk[i].style.display = "";
+      } else {
+        bk[i].style.display = "none";
+      }
+    }
+  };
+</script>

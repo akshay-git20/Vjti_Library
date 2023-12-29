@@ -1,87 +1,158 @@
 <% layout('layouts/boilerplate.ejs')%>
 <style>
   .wrapper {
-/* margin-left:75%; */
-margin-top: 0.2%;
-}
+    margin-top: 0.2%;
+  }
 
-#search-container {
-margin: 0.2em 0;
-}
-#search-container input {
-background-color: transparent;
-width: 35vh;
-height: 40px;
-border-radius: 20px;
-border-bottom: 2px solid #110f29;
-padding: 0.7em 0.3em;
+  #search-container {
+    margin: 0.2em 0;
+  }
 
-}
-#search-container input:focus {
-border-bottom-color: #6759ff;
-}
-.book{
-font-size: x-large;
-}
-#Allbooks{
-  margin-top: 0%;
-  margin-left: 5%;
-  margin-right: 5%;
-}
+  #search-container input {
+    background-color: transparent;
+    width: 35vh;
+    height: 40px;
+    border-radius: 20px;
+    border-bottom: 2px solid #110f29;
+    padding: 0.7em 0.3em;
+  }
+
+  #search-container input:focus {
+    border-bottom-color: #6759ff;
+  }
+
+  .book {
+    font-size: x-large;
+  }
+
+  #Allbooks {
+    margin-top: 0%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  /* Add new style for grid view */
+  .book-card {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    height: 300px; /* Set a fixed height for the card */
+    cursor: pointer;
+    position: relative;
+    padding: 10px 20px;
+    background: white;
+    font-size: 28px;
+    transition: all 1s;
+  }
+
+  .book-card:after,
+  .book-card:before {
+    content: " ";
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    border: 0px solid #fff;
+    transition: all 1s;
+    pointer-events: none;
+  }
+
+  .book-card:after {
+    top: -1px;
+    left: -1px;
+    border-top: 5px solid rgb(7, 105, 95);
+    border-left: 5px solid rgb(7, 105, 95);
+  }
+
+  .book-card:before {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 5px solid rgb(7, 105, 95);
+    border-right: 5px solid rgb(7, 105, 95);
+  }
+
+  .book-card:hover {
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    &:before,
+    &:after {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .book-image {
+    width: 160px; /* Set a fixed width for the image */
+    height: 200px; /* Set a fixed height for the image */
+    object-fit: cover; /* This property scales the image while maintaining its aspect ratio */
+  }
+
+  .book-details {
+    padding-left: 20px;
+    margin-top: 24px;
+  }
 </style>
 
-  <div class="card-header align-text-center">
-      <div class="wrapper mb-3" >
-          <div id="search-container"><strong class="book" style="margin-right:65%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ALL BOOKS</strong>
-              <input
-                type="search"
-                id="search-input"
-                placeholder="Search book name here.."
-              onkeyup="searchfun()">
-              <img src="https://th.bing.com/th?id=OIP.zauFo5LpJiOvon3jJEM3nwHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" height="30" width="30">
-            </div>
-          </div>
-      </div>
-      </div>
-    <div id="Allbooks">
-    <% for (let book of books) { %>
-        <div class="card">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="<%=book.images%> " alt="" class="img-fluid mt-4 mb-4 ms-2" width="230" height="160">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5><strong><%= book.title %> </strong></h5>
-                        <h6><%= book.book_author %> </h6>
-                        <p class="card-text"><i><%= book.description %></i> </p>
-                        <p class="card-text">
-                            <small class="text-muted">Edition: <%= book.edition %> </small> <br>
-                            <small class="text-muted">Available Copies: <%= book.availableCopies %> </small>
-                        </p>
-                          <a class="btn btn-primary" href="/books/<%=book._id%>">View <%=book.title%> </a>
-                      </p>
-                      </div>
-                </div>
-            </div>
-          </div>
-            <br>
-            <% } %>
-          </div>
+<div class="card-header align-text-center">
+  <div class="wrapper mb-3">
+    <div id="search-container">
+      <strong class="book" style="margin-right: 65%"
+        >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ALL
+        BOOKS</strong
+      >
+      <input
+        type="search"
+        id="search-input"
+        placeholder="Search book name here.."
+        onkeyup="searchfun()"
+      />
+      <img
+        src="https://th.bing.com/th?id=OIP.zauFo5LpJiOvon3jJEM3nwHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2"
+        height="30"
+        width="30"
+      />
+    </div>
+  </div>
+</div>
 
-    <script>
-        const searchfun=()=>{
-            let filter =document.getElementById('search-input').value.toUpperCase();
-            let Allbook =document.getElementById('Allbooks');
-            let bk=Allbook.getElementsByClassName('card');
-            
-            for(var i=0; i<bk.length;i++){
-                let title=bk[i].firstElementChild.innerText;
-                if(title.toUpperCase().indexOf(filter)>-1){
-                   bk[i].style.display="";
-                }else{
-                  bk[i].style.display="none";
-                }
-            }
-        }
-    </script>
+<div id="Allbooks" class="row">
+  <% for (let book of books) { %>
+  <div class="col-md-6">
+    <div class="book-card card">
+      <div class="book-image">
+        <img src="<%=book.images%>" alt="" class="img-fluid mt-4 mb-4 ms-2" />
+      </div>
+      <div class="book-details">
+        <h5><strong><%= book.title %> </strong></h5>
+        <h6><%= book.book_author %></h6>
+        <p class="card-text"><i><%= book.description %></i></p>
+        <p class="card-text">
+          <small class="text-muted">Edition: <%= book.edition %> </small> <br />
+          <small class="text-muted"
+            >Available Copies: <%= book.availableCopies %>
+          </small>
+        </p>
+        <a class="btn btn-outline-dark" href="/books/<%=book._id%>">View </a>
+      </div>
+    </div>
+  </div>
+  <% } %>
+</div>
+
+<script>
+  const searchfun = () => {
+    let filter = document.getElementById("search-input").value.toUpperCase();
+    let Allbook = document.getElementById("Allbooks");
+    let bk = Allbook.getElementsByClassName("book-card");
+
+    for (var i = 0; i < bk.length; i++) {
+      let title = bk[i]
+        .getElementsByClassName("book-details")[0]
+        .getElementsByTagName("h5")[0].innerText;
+      if (title.toUpperCase().indexOf(filter) > -1) {
+        bk[i].style.display = "";
+      } else {
+        bk[i].style.display = "none";
+      }
+    }
+  };
+</script>

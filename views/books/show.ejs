@@ -1,61 +1,65 @@
 <% layout('layouts/boilerplate.ejs')%>
-  <!-- <link rel="stylesheet" href="/stylesheet/stars.css"> -->
-  <div class="row mt-2 offset-1">
-    <br>
-    <br>
-    <div class="col-6 mb-4">
-      <div class="card " style="width: 65rem;">
-        <div class="card-body row">
-          <div class="col">
-            <img src="<%=book.images%>" class="d-block w-50 h-90 mb-3" alt="">
-          </div>
-          <div class="col">
-            <h5 class="card-title">
-              <%= book.title %>
-            </h5>
-            <p class="card-text">
-              <%= book.book_author%>
-            </p>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Edition: <%=book.edition %>
-              </li>
-              <li class="list-group-item">Available Copies: <%=book.availableCopies%>
-              </li>
-            </ul>
-          </div>
-          <div class="row">
-            <div class="col">
-
-            </div>
-            <div class="col d-grip d-grid gap-2 col-3">
-              <% if((book.availableCopies)>0) {%> 
-                <form action="/books/<%= book._id %>/issue?_method=PUT" method="POST">
-                  <button class="btn btn-outline-dark mt-1 mb-1 w-100">Issue Now</button>
-                </form>
-              <%} else {%> 
-                <form action="/books/<%= book._id %>/waitlist?_method=PUT" method="POST">
-                  <button class="btn btn-outline-dark mt-1 mb-1 w-100"><abbr class="alignnone" style="text-decoration: none;" title="<%=(book.waitlist).length%> people are in the waiting list">Add Name to Waiting List</abbr></button>
-                </form>
-              <% } %> 
-              <form action="/books/<%= book._id %>/wishlist?_method=PUT" method="POST">
-                <button class="btn btn-outline-dark mt-1 mb-1 w-100">Add Book to Wish List</button>
-              </form>
-            </div>
-            <div class="col">
-
-            </div>
-          </div>
-            
-
-          
+<!-- <link rel="stylesheet" href="/stylesheet/stars.css"> -->
+<div class="row mt-2 offset-1">
+  <br />
+  <br />
+  <div class="col-6 mb-4">
+    <div class="card" style="width: 65rem">
+      <div class="card-body row">
+        <div class="col">
+          <img src="<%=book.images%>" class="d-block w-50 h-90 mb-3" alt="" />
         </div>
-
-        <!-- delete book and edit book buttons removed -->
-      
+        <div class="col">
+          <h5 class="card-title"><%= book.title %></h5>
+          <p class="card-text"><%= book.book_author%></p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Edition: <%=book.edition %></li>
+            <li class="list-group-item">
+              Available Copies: <%=book.availableCopies%>
+            </li>
+          </ul>
+        </div>
+        <div class="row">
+          <div class="col"></div>
+          <div class="col d-grip d-grid gap-2 col-3">
+            <% if((book.availableCopies)>0) {%>
+            <form
+              action="/books/<%= book._id %>/issue?_method=PUT"
+              method="POST"
+            >
+              <button class="btn btn-outline-dark mt-1 mb-1 w-100">
+                Issue Now
+              </button>
+            </form>
+            <%} else {%>
+            <form
+              action="/books/<%= book._id %>/waitlist?_method=PUT"
+              method="POST"
+            >
+              <button class="btn btn-outline-dark mt-1 mb-1 w-100">
+                <abbr
+                  class="alignnone"
+                  style="text-decoration: none"
+                  title="<%=(book.waitlist).length%> people are in the waiting list"
+                  >Add Name to Waiting List</abbr
+                >
+              </button>
+            </form>
+            <% } %>
+            <form
+              action="/books/<%= book._id %>/wishlist?_method=PUT"
+              method="POST"
+            >
+              <button class="btn btn-outline-dark mt-1 mb-1 w-100">
+                Add Book to Wish List
+              </button>
+            </form>
+          </div>
+          <div class="col"></div>
+        </div>
       </div>
+
+      <!-- delete book and edit book buttons removed -->
     </div>
-    
-    
-    
-    
-    
+  </div>
+</div>
