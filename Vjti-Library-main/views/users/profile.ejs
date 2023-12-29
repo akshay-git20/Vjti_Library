@@ -29,7 +29,7 @@
             <h4>ISSUED BOOKS</h4>
         </div>
         <div style="text-align: justify;" class="card-body align-text-center col-8 mt-4 ms-5">
-            <% if((user.issuedBooks).length === 0 && books.length === 0) { %> 
+            <% if((user.issuedBooks).length === 0 ) { %> 
                 <p class="card-text">No books currently issued</p>
             <%} else {%>
                 <% for (let i=0; i<books.length; i++) { %>
