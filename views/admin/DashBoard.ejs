@@ -2,17 +2,85 @@
 <style>
     body{
       width:100hh;
+      overflow: hidden;
+    }
+    .OPT {
+      width: 250px;
+      /* Add any existing styles for the container here */
+    }
+
+    /* Existing styles for .exp */
+    .exp {
+      /* Add any existing styles for the "EXPLORE HERE!" paragraph here */
+      flex: 1; /* Adjust if necessary */
+      margin-bottom: 3px; /* Adjust if necessary */
+    }
+
+    /* Existing styles for .p-2.mb-3 a */
+    .p-2.mb-3 a {
+      color: black;
+      text-decoration: none;
+      /* Add any existing styles for the links inside the container here */
+    }
+
+    /* New styles for .button-59 */
+    .button-59 {
+      align-items: center;
+      background-color: #fff;
+      border: 2px solid #000;
+      box-sizing: border-box;
+      color: #000;
+      cursor: pointer;
+      display: inline-flex;
+      fill: #000;
+      font-family: Inter, sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      height: 48px;
+      justify-content: center;
+      letter-spacing: -.8px;
+      line-height: 24px;
+      min-width: 140px;
+      outline: 0;
+      padding: 0 17px;
+      text-align: center;
+      text-decoration: none;
+      transition: all .3s;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+
+    .button-59:focus {
+      color: #171e29;
+    }
+
+    .button-59:hover {
+      border-color: #06f;
+      color: #06f;
+      fill: #06f;
+    }
+
+    .button-59:active {
+      border-color: #06f;
+      color: #06f;
+      fill: #06f;
+    }
+
+    @media (min-width: 768px) {
+      .button-59 {
+        min-width: 170px;
+      }
     }
     .bg-image{
       background-image: url('https://th.bing.com/th/id/OIP.fSlXlha0zqo3oHtDcjRlWQHaE8?w=254&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7');
      background-repeat: no-repeat;
-     background-size: 1200px 570px;
-      height:79vh;
+     background-size:cover;
+      height:77vh;
       width:100hh; 
       text-align: center;
       margin-left: 22%;
       margin-right: 0%;
-      ;
     }
     .heading{
      color: black;
@@ -23,22 +91,21 @@
     }
     .float-sm-start{
         width: 22%;
-        height:79vh;
+        height:76.9vh;
         /* background-color:black; */
 
     }
     .p-1,.p-2{
       width: 95%;
-  background-color: rgb(163, 158, 158);
   border-color: rgb(109, 37, 37);
   border-radius: 5px;
   text-decoration: none;
   margin-left: 9%;
 }
-.p-2:hover{
+/* .p-2:hover{
  background-color:gray;
 
-}
+} */
 .exp{
 font-size: x-large;
 font-style: italic;
@@ -60,15 +127,15 @@ margin-left: 6%;
     
     <div class="float-sm-start"><div class="OPT mt-3" style="width:250px;">
         <p class="exp flex mb-3"> <img src="https://th.bing.com/th?id=OIP.yg9qTK4GbobmIc9KTC39pQHaFy&w=282&h=220&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" height="30" width="30">&nbsp;MANAGE BOOKS</p>
-              <div class="p-1 mb-3"><a href="/admin/books" style="color: black;text-decoration: none;">ALL BOOKS</a></div>
-              <div class="p-1 mb-3"><a href="/admin/bookbank" style="color: black;text-decoration: none;">BOOK BANK</a></div>
-              <div class="p-1 mb-3"><a href="/admin/reqbook" style="color: black;text-decoration: none;">REQUESTED BOOKS</a></div>
-              <div class="p-1 mb-3"><a href="/admin/new" style="color: black;text-decoration: none;">ADD BOOK TO LIBRARY</a></div>
+              <div class="button-59 p-2 mb-3 btn btn-outline-green"><a href="/admin/books" style="color: black;text-decoration: none;">ALL BOOKS</a></div>
+              <div class="button-59 p-2 mb-3 btn btn-outline-green"><a href="/admin/bookbank" style="color: black;text-decoration: none;">BOOK BANK</a></div>
+              <div class="button-59 p-2 mb-3 btn btn-outline-green"><a href="/admin/reqbook" style="color: black;text-decoration: none;">REQUESTED BOOKS</a></div>
+              <div class="button-59 p-2 mb-3 btn btn-outline-green"><a href="/admin/new" style="color: black;text-decoration: none;">ADD BOOK TO LIBRARY</a></div>
         <p class="exp flex mb-2"> <img src="https://th.bing.com/th?id=OIP.f3DM2upCo-p_NPRwBAwbKQHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" height="34" width="34" style="margin-bottom:2%">&nbsp;MANAGE USERS</p>
               <!-- <div class="p-1 mb-3"><a href="/admin/showIssuedBookbank" style="color: black;text-decoration: none;">RETURN BOOK</a></div> -->
-              <div class="p-1 mb-3"><a href="/admin/showIssuedBooks" style="color: black;text-decoration: none;">ISSUED BOOKS</a></div>
-              <div class="p-1 mb-3"><a href="/admin/showIssuedBookbank" style="color: black;text-decoration: none;">ISSUED BBANK BOOKS</a></div>
-              <div class="p-1 mb-3"><a href="/books/pyqs" style="color: black;text-decoration: none;">PYQS</a></div>
+              <div class="button-59 p-2 mb-3 btn btn-outline-green"><a href="/admin/showIssuedBooks" style="color: black;text-decoration: none;">ISSUED BOOKS</a></div>
+              <div class="button-59 p-2 mb-3 btn btn-outline-green"><a href="/admin/showIssuedBookbank" style="color: black;text-decoration: none;">ISSUED BBANK BOOKS</a></div>
+              <!-- <div class="button-59 p-2 mb-3 btn btn-outline-green"><a href="/books/pyqs" style="color: black;text-decoration: none;">PYQS</a></div> -->
          </div> 
     </div>
     

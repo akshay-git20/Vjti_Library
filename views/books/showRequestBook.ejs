@@ -1,62 +1,127 @@
 <% layout('layouts/boilerplate.ejs')%>
 <style>
-    * {
-  box-sizing: border-box;
-}
+  * {
+    box-sizing: border-box;
+  }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
 
-/* Float two columns side by side */
-.column {
-  float: left;
-  width: 50%;
-  padding: 0 10px;
-}
+  /* Existing styles... */
 
-/* Remove extra left and right margins, due to padding in columns */
-.row {margin: 0 -5px;}
+  .card {
+    position: relative;
+    width: 200px;
+    height: 250px;
+    border-radius: 14px;
+    z-index: 1111;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+  }
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+  .bg {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 190px;
+    height: 240px;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(24px);
+    border-radius: 10px;
+    overflow: hidden;
+    outline: 2px solid white;
+  }
 
-/* Style the counter cards */
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
-  padding: 16px;
-  text-align: center;
-}
+  .blob {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #ff0000;
+    opacity: 1;
+    filter: blur(12px);
+    animation: blob-bounce 5s infinite ease;
+  }
 
-.horizontal-center {
-  margin: 0;
-  position: absolute;
-  left: 45%;
-  top:80%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
+  @keyframes blob-bounce {
+    0% {
+      transform: translate(-100%, -100%) translate3d(0, 0, 0);
+    }
 
-img:hover {
+    25% {
+      transform: translate(-100%, -100%) translate3d(100%, 0, 0);
+    }
+
+    50% {
+      transform: translate(-100%, -100%) translate3d(100%, 100%, 0);
+    }
+
+    75% {
+      transform: translate(-100%, -100%) translate3d(0, 100%, 0);
+    }
+
+    100% {
+      transform: translate(-100%, -100%) translate3d(0, 0, 0);
+    }
+  }
+
+  /* Other styles... */
+
+  /* Float two columns side by side */
+  .column {
+    float: left;
+    width: 50%;
+    padding: 0 10px;
+  }
+
+  /* Remove extra left and right margins, due to padding in columns */
+  .row {
+    margin: 0 -5px;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* Style the counter cards */
+
+  .horizontal-center {
+    margin: 0;
+    position: absolute;
+    left: 45%;
+    top: 80%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  img:hover {
     box-shadow: 0px 6px 5px #ccc;
     padding: 0px;
-}
-
-/* Responsive columns - one column layout (vertical) on small screens */
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-    display: block;
-    margin-bottom: 20px;
   }
-}
 
-/* for like button*/
-/* @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap");
+  /* Responsive columns - one column layout (vertical) on small screens */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+
+  /* for like button*/
+  /* @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap");
  * {
   margin: 0;
   padding: 0;
@@ -70,7 +135,7 @@ body {
   width: 100%;
   height: 100vh;
 } */
-/*
+  /*
 .like__btn {
   padding: 10px 15px;
   background: #0080ff;
@@ -82,55 +147,55 @@ body {
   border: none;
   cursor: pointer;
 } */
-
-
-
 </style>
-<div style="text-align: justify;" class="card card-header align-text-center mt-2 mb-4 bg-light-gray">
-    <h4>REQUESTED BOOKS</h4>
+<div
+  style="text-align: justify"
+  class="card-header align-text-center mt-2 mb-4 bg-light-gray"
+>
+  <h4>REQUESTED BOOKS</h4>
 </div>
-<div class="row align-start ">
-<% for (let book of requestedBooks) { %>
-    <div class="col-6 mb-2">
-      <div class="card">
-        
-        <div class="card-body">
-            <div class="title" id="title">Title: <%=book.book_title%> </div>
-        <p class="card-text">Subject: <%=book.book_subject%> </p>
+<div class="row align-start">
+  <% for (let book of requestedBooks) { %>
+  <div class="col-6 mb-2">
+    <div class="card">
+      <div class="card-body">
+        <div class="title" id="title">Title: <%=book.book_title%></div>
+        <p class="card-text">Subject: <%=book.book_subject%></p>
         <p class="card-text">
-            <small class="text-muted">Edition: <%=book.book_edition%> </small> <br>
-            <small class="text-muted">Book Author: <%=book.book_author%> </small>
+          <small class="text-muted">Edition: <%=book.book_edition%> </small>
+          <br />
+          <small class="text-muted">Book Author: <%=book.book_author%> </small>
         </p>
-        <br>
-        
-        
+        <br />
+
         <form action="/books/<%=book._id%>/likes?_method=PUT" method="POST">
-        <button type="submit">
-        <i class="material-icons" onclick="likePost('<%=book._id%>')">thumb_up</i>
-      </button>
-      </form>
-      <% if((book.book_likes).length > 0) %> 
+          <button type="submit">
+            <i class="material-icons" onclick="likePost('<%=book._id%>')"
+              >thumb_up</i
+            >
+          </button>
+        </form>
+        <% if((book.book_likes).length > 0) %>
         <p class="card-text"><%=book.book_likes.length%>Likes</p>
-      
 
         <!-- <button action="/books/likes" method="post" class="like__btn">
           <span id="icon"><i class="far fa-thumbs-up"></i></span>
           <span id="count">0</span> Like
        </button> -->
-
       </div>
+    </div>
+  </div>
+  <% } %>
 </div>
-</div>
-<% } %>
-<br>
-<br>
-<br>
-</div>
-<br>
-<a class="btn btn-primary" style="width:150px; padding:1%;" href="/books/requestbook">Request a Book </a>
+<br />
+<a
+  class="btn btn-primary"
+  style="width: 150px; margin-left: 10px"
+  href="/books/requestbook"
+  >Request a Book
+</a>
 
 <script>
-
   /* const likePost= (id) => {
     fetch('/books/likes' , {
       method: "put",
@@ -157,7 +222,6 @@ body {
     })
   } */
 
- 
   /* function updateLikes() {
     id = $('.likeicon').attr('reqbookId');
     $.post('/books/' + id, function (response) {
@@ -166,7 +230,7 @@ body {
     })
 }  */
 
-/* const likeBtn = document.querySelector(".like__btn");
+  /* const likeBtn = document.querySelector(".like__btn");
   let likeIcon = document.querySelector("#icon"),
     count = document.querySelector("#count");
   
@@ -185,7 +249,4 @@ body {
     }
   });
    */
-
-
-
 </script>

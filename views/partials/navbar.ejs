@@ -1,14 +1,14 @@
 <style>
   #head {
     margin-left: 10px;
-    margin-top: 1px;
+    margin-top: 5px;
   }
   #abovenavbar {
     height: 90px;
   }
   .navbar {
     background-color: #1f5156;
-    height: 80px;
+    height: 65px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,7 +19,7 @@
   }
 
   .nav-item {
-    line-height: 40px;
+    line-height: 25px;
     margin-right: 1rem;
   }
 
@@ -81,16 +81,18 @@
     </a> </button>
   </form> -->
 </div>
-<nav class="navbar navbar-expand-lg bg-DimGray">
+<nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
-    <a class="css fw-bold" href="/student_home">&nbsp;Home</a>
+    <a class="navbar-brand text-white fw-bold" href="/student_home"
+      >&nbsp;Home</a
+    >
     <button
       class="navbar-toggler"
       type="button"
       data-bs-toggle="collapse"
       data-bs-target="#navbarNav"
       aria-controls="navbarNav"
-      aria-expanded="false"
+      aria-expanded="true"
       aria-label="Toggle navigation"
     >
       <span class="navbar-toggler-icon"></span>
@@ -98,22 +100,16 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="css fw-bold" href="/books"> &nbsp;&nbsp;&nbsp;All Books</a>
+          <a class="css fw-bold" href="/books"> All Books</a>
         </li>
         <li class="nav-item">
-          <a class="css fw-bold" href="/bookbank"
-            >&nbsp;&nbsp;&nbsp;Book Bank</a
-          >
+          <a class="css fw-bold" href="/bookbank">Book Bank</a>
         </li>
         <li class="nav-item">
-          <a class="css fw-bold" aria-current="page" href="/info"
-            >&nbsp;&nbsp;&nbsp;About Us</a
-          >
+          <a class="css fw-bold" aria-current="page" href="/info">About Us</a>
         </li>
         <li class="nav-item">
-          <a class="css fw-bold text-fs-6" href="/books/rules">
-            &nbsp;&nbsp;&nbsp;Rules</a
-          >
+          <a class="css fw-bold text-fs-6" href="/books/rules"> Rules</a>
         </li>
       </ul>
       <script src="/javascript/validateForms.js"></script>
