@@ -1,101 +1,6 @@
+
 <% layout('layouts/boilerplate')%>
 <style>
-    
-    body {
-        margin: 0; /* Remove default margin */
-    }
-
-    .bg-image {
-        background-image: url('https://www.princeton.edu/sites/default/files/styles/half_2x/public/images/2019/03/SMS_9732%20copy_d.jpg?itok=XLs09r5C');
-        background-repeat: no-repeat;
-        background-size: cover; /* Cover the entire viewport */
-        background-position: center center; /* Center the image */
-        height: 73.5vh; /* 100% of the viewport height */
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-right: 23px;
-        margin-top: -2.5px;
-    }
-  .heading{
-   color: black;
-   margin-top: 8%;
-   font-size:45px;
-   font-style: italic;
-   text-shadow: 2px 2px whitesmoke;
-  }
-    /* Existing styles for .OPT */
-    .OPT {
-      width: 250px;
-      /* Add any existing styles for the container here */
-    }
-
-    /* Existing styles for .exp */
-    .exp {
-      /* Add any existing styles for the "EXPLORE HERE!" paragraph here */
-      flex: 1; /* Adjust if necessary */
-      margin-bottom: 3px; /* Adjust if necessary */
-    }
-
-    /* Existing styles for .p-2.mb-3 a */
-    .p-2.mb-3 a {
-      color: black;
-      text-decoration: none;
-      /* Add any existing styles for the links inside the container here */
-    }
-
-    /* New styles for .button-59 */
-    .button-59 {
-      align-items: center;
-      background-color: #fff;
-      border: 2px solid #000;
-      box-sizing: border-box;
-      color: #000;
-      cursor: pointer;
-      display: inline-flex;
-      fill: #000;
-      font-family: Inter, sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      height: 48px;
-      justify-content: center;
-      letter-spacing: -.8px;
-      line-height: 24px;
-      min-width: 140px;
-      outline: 0;
-      padding: 0 17px;
-      text-align: center;
-      text-decoration: none;
-      transition: all .3s;
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: manipulation;
-    }
-
-    .button-59:focus {
-      color: #171e29;
-    }
-
-    .button-59:hover {
-      border-color: #06f;
-      color: #06f;
-      fill: #06f;
-    }
-
-    .button-59:active {
-      border-color: #06f;
-      color: #06f;
-      fill: #06f;
-    }
-
-    @media (min-width: 768px) {
-      .button-59 {
-        min-width: 170px;
-      }
-    }
-
   .col{
     margin-left: 3%;
   }
@@ -111,10 +16,15 @@
      padding: 0%;
 }
 .p-2{
-  width: 100px;
+  background-color: rgb(163, 158, 158);
+  border-color: rgb(109, 37, 37);
+  border-radius: 5px;
   text-decoration: none;
 }
+.p-2:hover{
+ background-color:gray;
 
+}
 
 #img{
   padding-top: 5%;
@@ -192,8 +102,8 @@ margin-left: 13%;
           </h2>
           <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-              <p><strong>Librarian:</strong>Ashok <br><strong>Contact:</strong>986745728</p><hr>
-              <p><strong>Librarian:</strong>Mahesh <br><strong>Contact:</strong>86736273</p>
+              <p><strong>Librarian:</strong>Sejal<br><strong>Contact:</strong>1234567890</p><hr>
+              <p><strong>Librarian:</strong>Tejal<br><strong>Contact:</strong>1234567890</p>
             </div>
           </div>
         </div>
@@ -202,18 +112,33 @@ margin-left: 13%;
  
 </div>
 <div class="col" >
-  <div class="bg-image opacity-75 d-flex justify-content-center  " >
-    <h1 class="heading fw-bold opacity-100  d-flex justify-content-center">WELCOME TO VJTI LIBRARY</h1>
-  </div>
+<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" data-bs-interval="100" class="active" aria-current="true" aria-label="Slide 1" ></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" data-bs-interval="100" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" data-bs-interval="100" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner opacity-75"  style="width:95%; height:55%;">
+      <div class="carousel-item active" >
+        <img src="https://lh3.googleusercontent.com/p/AF1QipM1rqkSk5SiKN59HEwJiDo4R9qrTgUDgTgZzulu=s680-w680-h510" class="d-block w-100"  alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://lh3.googleusercontent.com/p/AF1QipOBGeribgeIKafN0Mca1WH7RdwvNWmis1z6flkp=s680-w680-h510" class="d-block w-100"  alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://lh3.googleusercontent.com/p/AF1QipOecf_BcqyLT3Osk0-clty08nVZR8r8Qmf9jMCq=s680-w680-h510" class="d-block w-100"  alt="...">
+      </div>
+    </div> 
+</div>
 </div>
 <div class="OPT mt-3" style="width:250px;">
-  <p class="mb-3" style = "font-family: monospace ; font-size:28px"">EXPLORE HERE!</p>
-        <div class="button-59 p-2 mb-3 btn btn-outline-green" style="width: 210px;"><a href="/books">ALL TITLES</a></div>
-        <div class="button-59 p-2 mb-3 btn btn-outline-green" style="width: 210px;"><a href="/books/popular">POPULAR TITLES</a></div>
-        <div class="button-59 p-2 mb-3 btn btn-outline-green" style="width: 210px;"><a href="/books/pyqs">PYQS</a></div>
-        <div class="button-59 p-2 mb-3 btn btn-outline-green" style="width: 210px;"><a href="/books/reqbook">REQUEST BOOK</a></div>
-        <div class="button-59 p-2 mb-3 btn btn-outline-green" style="width: 210px;"><a href="/books/waitinglist">WAITING LIST</a></div>
-        <div class="button-59 p-2 mb-3 btn btn-outline-green" style="width: 210px;"><a href="/books/wishlist">WISH LIST</a></div>
+  <p class="exp flex mb-3">EXPLORE HERE!</p>
+        <div class="p-2 mb-3"><a href="/books" style="color: black;text-decoration: none;">ALL TITLES</a></div>
+        <div class="p-2 mb-3"><a href="/books/popular" style="color: black;text-decoration: none;">POPULAR TITLES</a></div>
+        <div class="p-2 mb-3"><a href="/books/pyqs" style="color: black;text-decoration: none;">PYQS</a></div>
+        <div class="p-2 mb-3"><a href="/books/reqbook" style="color: black;text-decoration: none;">REQUEST BOOK</a></div>
+        <div class="p-2 mb-3"><a href="/books/waitinglist" style="color: black;text-decoration: none;">WAITING LIST</a></div>
+        <div class="p-2 mb-3"><a href="/books/wishlist" style="color: black;text-decoration: none;">WISH LIST</a></div>
       </div>
       
   </div>

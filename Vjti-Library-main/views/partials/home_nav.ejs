@@ -1,80 +1,40 @@
 <style>
-  #head {
-    margin-left: 10px;
-    margin-top: 5px;
-  }
+  #head{
+  margin-left: 10px;
+  margin-top: 5px;
+}
+#abovenavbar{
+  height:90px;
+}
+.navbar{
+  height:35px;
 
-  #abovenavbar {
-    height: 90px;
-  }
-
-  .navbar {
-    height: 35px;
-    background-color: #1f5156;
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    position: sticky;
-    top: 0;
-    z-index: 20;
-  }
-
-  .nav-item {
-  line-height: 25px;
-  margin-right: 1rem;
+}
+.modal-footer{
+  height: 40px;
+}
+.btn{
+  margin-top: 0px;
+}
+#selopt{
+  width: 88px;
+}
+.a:hover{
+   font-weight: bolder;
+   box-shadow: 2em;
+}
+.css{
+color: white;
+text-decoration: none;
+margin-top: 0%;
+}
+.css:hover{
+color: white;
+font-weight: bolder;
+text-shadow: 1px 1px whitesmoke;
 }
 
-.nav-item:after {
-  content: "";
-  display: block;
-  height: 3px;
-  width: 0;
-  background: transparent;
-  transition: width 0.7s ease, background-color 0.5s ease;
-}
-
-.nav-item:hover:after {
-  width: 100%;
-  background: #ffdd40;
-}
-
-.nav-item .active {
-  color: #ffdd40;
-  border: 1px solid #ffdd40;
-}
-
-  .modal-footer {
-    height: 40px;
-  }
-
-  .btn {
-    margin-top: 0px;
-  }
-
-  #selopt {
-    width: 88px;
-  }
-
-  .a:hover {
-    font-weight: bolder;
-    box-shadow: 2em;
-  }
-
-  .css {
-    color: white;
-    text-decoration: none;
-    margin-top: 0%;
-  }
-
-  .css:hover {
-    color: white;
-    font-weight: bolder;
-    text-shadow: 1px 1px whitesmoke;
-  }
 </style>
-
 <div class="d-flex justify-content-between fw-bold  mb-20" id="abovenavbar">
   <a class="navbar-brand text-dark" href="#">
     <img src="https://seeklogo.com/images/V/vjti-college-logo-707F46CDA8-seeklogo.com.png" alt="" width="70" height="80" class="d-inline-block align-text-centre" id="head">
@@ -87,7 +47,7 @@
     </a> </button>
   </form> -->
   </div>
-  <nav class="navbar navbar-expand-lg ">
+  <nav class="navbar navbar-expand-lg bg-dark">
     <div class="container-fluid">
       <a class="css fw-bold" href="/">&nbsp;Home</a>
       </button>
